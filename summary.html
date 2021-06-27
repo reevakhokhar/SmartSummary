@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartrizer</title>
+    <link href="../static/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="navcontainer">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/summarizer">Summarizer</a>
+            <a href="/script">ReciteIt</a>
+        </nav>
+    </div>
+    <br>
+    <div class="opening">
+     <h1 class="title">Hi, enter your notes down here to receive awesome links and keywords </br> (Make sure its over 5 sentences!) </h1>
+     <form action="{{ url_for('submit') }}" method="post" id="form">
+         <textarea name="text" class="textinput"></textarea>
+         <input type="submit" class="homebutton" id="entersummarize">
+         <p id="loading"></p>
+     </form>
+    </div>
+
+    <script>
+        document.getElementById("entersummarize").addEventListener('click', displayLoad);
+
+        function displayLoad() {
+            document.getElementById("loading").textContent = 'Please wait for approx 30 secs for the keyword to show up (check for updates on the console!)';
+        }
+    </script>
+    
+</body>
+</html>
