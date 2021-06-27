@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartrizer</title>
+    <link href="../static/global.css" rel="stylesheet" type="text/css">
+    <link href="../static/readout.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="navcontainer">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/summarizer">Summarizer</a>
+            <a href="/script">ReciteIt</a>
+        </nav>
+    </div>
+    <br>
+
+    <div class="opening">
+    
+    <h1 id="question" style="font-size: 40px;">Click Start to hear your notes, and then click listen to record!</h1>
+    <div class="logocontainer">
+        <img class="learn" src="../static/img/logo.png">
+    </div>
+    <main>
+        <div class="buttons">
+            <button id="button" class="startbutton homebutton">Start listening</button>
+            <p id="message" hidden aria-hidden="true">
+                Your browser doesn't support Speech Recognition. Sorry.
+            </p>
+            <button id="checker" class="startbutton homebutton" onclick="questionshower">Start</button>
+        </div>
+        <div id="result"></div>
+    </main>
+    <p id="thescript" style="display: none;">{{ textscript }}</p>
+    </div>
+
+    <script>
+        //This code is a heavily modified code from mozilla speech to text documentation
+        window.addEventListener("DOMContentLoaded", () => {
+                const button = document.getElementById("button");
+                const result = document.getElementById("result");
+                const main = document.getElementsByTagName("main")[0];
+                let listening = false;
+                const SpeechRecognition =
+                    window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (typeof SpeechRecognition !== "undefined") {
+                    const recognition = new SpeechRecognition();
+
+                    const stop = () => {
+                        main.classList.remove("speaking");
+                        recognition.stop();
+                        button.textContent = "Start listening";
+                    };
+
+                    const start = () => {
+                        main.classList.add("speaking");
+                        recognition.start();
+                        button.textContent = "Stop listening";
+                    };
+
+                    const onResult = event => {
+                        result.innerHTML = "";
+                        for (const res of event.results) {
+                            const text = document.createTextNode(res[0].transcript);
+                            const p = document.createElement("p");
+                            p.id = 'speechResult'
+                            if (res.isFinal) {
+                                p.classList.add("final");
+                            }
+                            p.appendChild(text);
+                            result.appendChild(p);
+
+                        }
+                    };
+                    recognition.continuous = true;
+                    recognition.interimResults = true;
+                    recognition.addEventListener("result", onResult);
+                    button.addEventListener("click", event => {
+                        listening ? stop() : start();
+                        listening = !listening;
+                    });
+                } else {
+                    button.remove();
+                    const message = document.getElementById("message");
+                    message.removeAttribute("hidden");
+                    message.setAttribute("aria-hidden", "false");
+                }
+            });
+
+            var clicked = 0
+
+            function questionshower() {
+                script = document.getElementById("thescript").textContent;
+                splitscript = script.replace(/([.?!])\s*(?=[A-Z])/g, "|").split("|")
+
+                var msg = "Good luck, hope it helps!";
+                //if (clicked == 0) {
+                    //msg = splitscript[0];
+                    //document.getElementById("checker").innerHTML = "Check";
+                //}
+
+                if (clicked == 0) {
+                    msg = splitscript[0];
+                    document.getElementById("checker").innerHTML = "Check";
+                    document.getElementById("question").innerHTML = (msg);
+                    var msg = new SpeechSynthesisUtterance(msg);
+                    window.speechSynthesis.speak(msg);
+
+                    clicked = clicked + 1;
+                } else if (clicked <= splitscript.length) {
+                    
+                    removedComma = document.getElementById("question").innerHTML.toUpperCase().replace(',', '');;
+                    console.log(removedComma)
+                    console.log(document.getElementById('speechResult').innerHTML.toUpperCase())
+
+                      if (document.getElementById('speechResult').innerHTML.toUpperCase() == removedComma) {
+                        console.log('its right')
+                        clicked = clicked + 1;
+                        console.log(clicked)
+
+
+                    } else {
+                        document.getElementById('speechResult').textContent = "Click the Start Listening button to detect your speech";
+
+                    }
+                    msg = splitscript[clicked];
+
+                    document.getElementById("question").innerHTML = (msg);
+                    var msg = new SpeechSynthesisUtterance(msg);
+                    window.speechSynthesis.speak(msg);
+
+                    
+
+
+ 
+
+                  
+                    
+                } else {
+                    msg = "Happy studying, or add a new script on the script page!";
+                    
+                }
+                
+
+                
+                
+            }
+
+            function test() {
+                msg = "test"
+                document.getElementById("question").innerHTML = msg;
+
+            }
+
+            document.getElementById("checker").addEventListener("click", questionshower);
+
+
+    </script>
+</body>
+</html>
