@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+nav {
+  width: 30%;
+  float: right;
+  display: flex;
+  flex-direction: row;
+}
+
+nav a {
+  position: relative;
+  width: 33.333%;
+  display: table-cell;
+  text-align: center;
+  color: #949494;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: 0.2s ease color;
+}
+
+nav a:hover {
+  color: black;
+}
+
+.navcontainer {
+  width: 100%;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.opening {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  color: #1e266d;
+  margin-top: 100px;
+}
+
+.homebutton {
+  background-color: #3751ff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 55px;
+  font-size: 24px;
+  color: white;
+  margin-top: 20px;
+  max-width: 300px;
+}
+
+.homebutton:hover {
+  background-color: purple;
+}
+
+a {
+  text-decoration: none;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100vw;
+  max-width: 600px;
+  flex-direction: row;
+}
+
+.imagemain {
+  margin-top: 70px;
+  width: 80%;
+  min-width: 300px;
+  max-width: 800px;
+  margin-left: 2%;
+}
+
+p {
+  font-size: 25px;
+}
+
+.textinput {
+  width: 80vw;
+  padding: 30px 20px;
+  font-size: 20px;
+  border-radius: 30px;
+  height: 40vh;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  width: 80vw;
+}
+
+.dropbtn {
+  background-color: #3751ff;
+  color: white;
+  padding: 16px 50px;
+  font-size: 25px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #1e266d;
+}
+
+.condensed {
+  width: 60vw;
+  padding: 30px 30px;
+  font-size: 25px;
+  border-radius: 30px;
+  background-color: #6479fd;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.resultopening {
+  margin-bottom: 100px;
+}
