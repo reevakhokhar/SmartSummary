@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartrizer</title>
+    <link href="../static/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="navcontainer">
+    <nav>
+        <a href="/">Home</a>
+        <a href="/summarizer">Summarizer</a>
+        <a href="/script">ReciteIt</a>
+    </nav>
+</div>
+<br>
+    <div class="opening resultopening">
+     <h1>Important words in your note</h1>
+     <div class="condensed">
+        <p>{{ doc }}</p>
+     </div>
+
+     <h1 style="margin-bottom: -20px;">Keywords: </h1>
+     <p>Hover to see the top google search result + youtube search</p>
+    
+     <div class="keywords">
+        <div class="dropdown">
+             <button class="dropbtn">{{ key1 }}</button>
+
+            <div class="dropdown-content">
+                {% for link in websitelink1 %}
+                <a href="{{ link }}" target="_blank">{{ link }}</a>
+                {% endfor %}
+                <a href="{{ yt1 }}" target="_blank">{{ yt1 }}</a>
+            </div>
+           
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">{{ key2 }}</button>
+        
+            <div class="dropdown-content">
+                {% for link in websitelink2 %}
+                <a href="{{ link }}" target="_blank">{{ link }}</a>
+                {% endfor %}
+                <a href="{{ yt2 }}" target="_blank">{{ yt2 }}</a>
+            </div>
+        
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">{{ key3 }}</button>
+        
+            <div class="dropdown-content">
+                {% for link in websitelink3 %}
+                <a href="{{ link }}" target="_blank">{{ link }}</a>
+                {% endfor %}
+                <a href="{{ yt3 }}" target="_blank">{{ yt3 }}</a>
+            </div>
+        
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">{{ key4 }}</button>
+        
+            <div class="dropdown-content">
+                {% for link in websitelink4 %}
+                <a href="{{ link }}" target="_blank">{{ link }}</a>
+                {% endfor %}
+                <a href="{{ yt4 }}" target="_blank">{{ yt4 }}</a>
+            </div>
+        
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">{{ key5 }}</button>
+        
+            <div class="dropdown-content">
+                {% for link in websitelink5 %}
+                <a href="{{ link }}" target="_blank">{{ link }}</a>
+                {% endfor %}
+                <a href="{{ yt5 }}" target="_blank">{{ yt5 }}</a>
+            </div>
+        
+        </div>
+    
+     </div>
+     
+    </div>
+    
+</body>
+</html>
