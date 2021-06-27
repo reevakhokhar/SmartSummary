@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.opening {
+  margin-bottom: 150px;
+}
+
+.title {
+  width: 80vw;
+  flex-direction: column;
+  text-align: center;
+}
+.title-animated {
+  border-right: solid 3px rgba(0, 255, 0, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 70px;
+}
+.waves {
+  margin-bottom: -52px;
+}
+
+.mainlanding {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.mainlanding h1 {
+  color: white;
+}
+
+.featurepic {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+}
+
+.featurepic img {
+  width: 80%;
+}
+
+.gradient {
+  background: linear-gradient(253.58deg, #00d1ff 1.55%, #031b99 95.8%);
+}
+
+/*animation*/
+.title-animated {
+  animation: animated-text 8s steps(50, end) 1s 1 normal both,
+    animated-cursor 600ms steps(50, end) infinite;
+  color: black;
+}
+
+/* text animation */
+
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80vw;
+  }
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor {
+  from {
+    border-right-color: #3751ff;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+.featurepics {
+  width: 20%;
+}
